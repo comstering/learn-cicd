@@ -2,9 +2,9 @@ name: CI-Unittest
 
 on:
   push:
-    branches: [ feature/makeci ]
+    branches: [ master ]
   pull_request:
-    branches: [ feature/makeci ]
+    branches: [ master ]
 
 jobs:
   build:
