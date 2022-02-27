@@ -7,4 +7,4 @@ class Hello:
 if __name__ == "__main__":
     h = Hello()
     h.say()
-    h.add(2, 3)
+    print(h.add(2, 3))
