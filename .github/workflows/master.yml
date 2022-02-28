@@ -11,17 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.5, 3.6, 3.7, 3.8]
+        python-version: [3.7, 3.8]
 
     steps:
       # 현재 레포지토리 코드 업로드
-      - uses: actions/checkout@v2
-
-      # 정상적으로 clone 되었는지 확인
-      - name: Run pwd
-        run: pwd
-      - name: Check directory
-        run: ls -al
+      - name: Checkout my code
+        uses: actions/checkout@v2
       
       # 필요 환경/프레임워크/언어 설치
       - name: Setup python
@@ -61,7 +56,7 @@ jobs:
           tags: 1.0.0, latest
           registry: docker.io
           dockerfile: flask/Dockerfile
-          username: ${{ secrets.DOCKERHUB_USRNAME }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
   
   deploy:
