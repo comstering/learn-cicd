@@ -76,7 +76,7 @@ jobs:
           echo "${{ secrets.OCI_KEY_FILE }}" >> ~/.oci/key.pem
       
       - name: Install OCI CLI
-        run:
+        run: |
           curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
           chmod +x install.sh
           ./install.sh --accept-all-defaults
@@ -84,12 +84,12 @@ jobs:
           exec -l $SHELL
 
       - name: Fix Config File Permissions
-        run:
+        run: |
           oci setup repair-file-permissions --file /home/runner/.oci/config
           oci setup repair-file-permissions --file /home/runner/.oci/key.pem
       
       - name: Get Instance IP
-        run:
+        run: |
           echo "::set-env name=INSTANCE_IP::$( \
             oci compute instance list-vnics \
             --instance-id ${{ secrets.INSTANCE_OCID }} \
@@ -98,7 +98,7 @@ jobs:
           )"
 
       - name: Wait For SSH
-        run:
+        run: |
           while ! nc -w5 -z ${{ env.INSTANCE_IP }} 22; do
             sleep 5
             echo "SSH not available..."
