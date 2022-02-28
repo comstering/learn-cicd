@@ -1,4 +1,4 @@
-name: CI-Unittest
+name: Docker Build
 
 on:
   push:
@@ -44,6 +44,9 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout my code
+        uses: actions/checkout@v2
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
