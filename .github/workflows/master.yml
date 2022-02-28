@@ -1,4 +1,4 @@
-name: CI-Unittest
+name: Deploy
 
 on:
   push:
@@ -65,7 +65,7 @@ jobs:
 
     steps:
       - name: Write Config & Key Files
-        run:
+        run: |
           mkdir ~/.oci
           echo "[DEFAULT]" >> ~/.oci/config
           echo "user=${{ secrets.OCI_USER_OCID }}" >> ~/.oci/config
