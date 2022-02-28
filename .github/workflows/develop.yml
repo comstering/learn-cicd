@@ -59,4 +59,4 @@ jobs:
         with:
           context: flask/
           push: true
-          tags: user/app:latest
+          tags: comstering/learn-cicd:1.0.0 comstering/learn-cicd:latest
